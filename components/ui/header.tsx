@@ -16,8 +16,14 @@ export default function Header() {
               aria-hidden="true"
             />
 
+            {/* Site branding */}
+            <div className="flex flex-1">
+              {/* Logo */}
+              <Logo />
+            </div>
+
             {/* Navigation links */}
-            <nav className="flex-1">
+            <nav className="flex justify-center">
               <ul className="flex items-center sm:gap-x-3 text-sm font-medium">
                 <li>
                   <Link
@@ -45,12 +51,6 @@ export default function Header() {
                 </li> */}
               </ul>
             </nav>
-
-            {/* Site branding */}
-            <div className="flex justify-center">
-              {/* Logo */}
-              <Logo />
-            </div>
 
             {/* Light switch */}
             <ThemeToggle />

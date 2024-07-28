@@ -13,10 +13,16 @@ export default function Home() {
         <div className="px-4 sm:px-6">
           <PageHeader
             className="mb-12"
-            title="Speak Out Safely with Echo"
+            title={
+              <>
+                Speak Out <br />
+                Safely with Echo
+              </>
+            }
             description="Echo is a blockchain-powered anonymous reporting platform that empowers individuals to report incidents safely and securely. Whether you're reporting harassment, misconduct, or any other issue, Echo protects your identity while ensuring your voice is heard."
           >
-            Quiet Reports<span className="text-gray-300 mx-1">·</span> Loud Actions
+            Quiet Reports<span className="text-gray-300 mx-1">·</span> Loud
+            Actions
           </PageHeader>
 
           <ReportButton />

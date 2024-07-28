@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-import Logo from "@/public/images/logo.png";
 
 export default function Footer() {
   return (
@@ -11,17 +9,24 @@ export default function Footer() {
             <p className="text-sm text-gray-700 dark:text-gray-400">
               © Echo - Report Anonymously.{" "}
               <Link
-                href={"/"}
+                href={"/secure/app/public/new-report"}
                 className="font-medium text-indigo-500 hover:underline"
               >
-                Admin Login
+                Make a Report
               </Link>{" "}
               /{" "}
               <Link
                 href={"/"}
                 className="font-medium text-indigo-500 hover:underline"
               >
-                Track Report
+                Track a Report
+              </Link>{" "}
+              /{" "}
+              <Link
+                href={"/"}
+                className="font-medium text-indigo-500 hover:underline"
+              >
+                Admin Login
               </Link>
             </p>
           </div>

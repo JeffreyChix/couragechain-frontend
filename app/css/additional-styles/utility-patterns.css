@@ -80,6 +80,10 @@ input[type="search"]::-webkit-search-results-decoration {
   @apply placeholder-gray-400 dark:placeholder-gray-500;
 }
 
+.form-input.form-input-invalid {
+  @apply text-red-700 border border-red-700 placeholder-red-700;
+}
+
 .form-select {
   @apply pr-10;
 }
@@ -95,4 +99,40 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form-checkbox:checked {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%236366F1' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+
+.quill > .ql-toolbar {
+  @apply rounded-tl-lg rounded-tr-lg;
+}
+
+.quill > .ql-container {
+  @apply rounded-bl-lg rounded-br-lg bg-white/70 dark:bg-gray-900/50 border focus:ring-0 focus:ring-offset-0 border-transparent hover:bg-white/80 dark:hover:bg-gray-900/60 focus:bg-white dark:focus:bg-gray-900/80 focus:border-transparent shadow shadow-black/5;
+  font-size: inherit;
+}
+
+.ql-toolbar.ql-snow .ql-picker-label {
+  @apply text-gray-700 dark:text-gray-400;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  @apply text-gray-400 dark:text-gray-500;
+}
+
+.ql-snow.ql-toolbar button svg {
+  @apply text-current opacity-[0.76];
+}
+
+.ql-snow .ql-stroke {
+  @apply !stroke-current;
+}
+.ql-snow .ql-fill {
+  @apply !fill-current;
+}
+
+.quill.editor-invalid > .ql-toolbar {
+  @apply border-red-700;
+}
+
+.quill.editor-invalid > .ql-container {
+  @apply border-red-700;
 }

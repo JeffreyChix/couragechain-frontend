@@ -16,7 +16,7 @@ export default function ReportButton() {
             <div className="space-y-3">
               <div>
                 <Link
-                  href={"/"}
+                  href="/secure/app/public/new-report"
                   className="btn text-gray-100 text-2xl uppercase bg-gray-900 hover:bg-gray-800 dark:text-gray-800 dark:bg-gray-100 dark:hover:bg-white w-full"
                 >
                   make a report now
