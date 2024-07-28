@@ -9,8 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
-        "inter-tight": ["Inter Tight", "sans-serif"],
+        inter: ["var(--font-inter)"],
+        "inter-tight": ["var(--font-inter-tight)"],
       },
       fontSize: {
         xs: ["0.75rem", { lineHeight: "1.5" }],

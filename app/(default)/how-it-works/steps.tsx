@@ -1,15 +1,10 @@
 "use client";
 
-import { useState } from "react";
-
 import PostsSidebar from "./posts-sidebar";
-import PostsList from "./posts-list";
+import StepsList from "./StepsList";
 
-export default function Posts({ posts }: { posts: Post[] }) {
-  const categories = ["News", "Admin", "General", "Improvements", "Legal"];
-
-  const [selectedCategory, setSelectedCategory] = useState<string>("News");
-
+export default function Steps({ steps }: { steps: Step[] }) {
+ 
   return (
     <section>
       <div className="pb-12 md:pb-20">
@@ -17,14 +12,14 @@ export default function Posts({ posts }: { posts: Post[] }) {
           <div className="max-w-5xl mx-auto">
             <div className="md:flex md:justify-between">
               {/* Sidebar */}
-              <PostsSidebar
+              {/* <PostsSidebar
                 categories={categories}
                 selectedCategory={selectedCategory}
                 onCategoryChange={setSelectedCategory}
-              />
+              /> */}
 
               {/* Posts */}
-              <PostsList posts={posts} selectedCategory={selectedCategory} />
+              <StepsList steps={steps} />
             </div>
           </div>
         </div>

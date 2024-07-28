@@ -7,3 +7,9 @@ type Post = {
   date: string;
   category: string;
 };
+
+type Step = {
+  id: number;
+  title: string;
+  desc: string;
+};

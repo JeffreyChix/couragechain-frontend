@@ -1,4 +1,4 @@
-import SubscribeForm from "@/components/subscribe-form";
+import ReportButton from "@/components/report-button";
 
 export default function Cta() {
   return (
@@ -7,13 +7,13 @@ export default function Cta() {
         <div className="px-4 sm:px-6">
           <div className="max-w-3xl mx-auto">
             <div className="pt-12 md:pt-20 text-center border-t [border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.72),transparent)1] dark:[border-image:linear-gradient(to_right,transparent,theme(colors.indigo.300/.16),transparent)1] shadow-[inset_0_1px_0_0_theme(colors.white/.2)] dark:shadow-none mb-12">
-              <h2 className="font-inter-tight text-4xl md:text-5xl font-bold text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-indigo-200 dark:to-gray-200 pb-4">
-                Become part of our community
+              <h2 className="font-inter-tight text-3xl md:text-4xl font-bold text-gray-800 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-indigo-200 dark:to-gray-200 pb-4">
+                Rest assured, your identity will remain completely confidential.{" "}
               </h2>
             </div>
           </div>
 
-          <SubscribeForm />
+          <ReportButton />
         </div>
       </div>
     </section>
