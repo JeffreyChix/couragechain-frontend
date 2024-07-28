@@ -1,10 +1,10 @@
 export const metadata = {
-  title: "Home - Creative",
+  title: "Echo - Report Anonymously",
   description: "Page description",
 };
 
 import PageHeader from "@/components/page-header";
-import SubscribeForm from "@/components/subscribe-form";
+import ReportButton from "@/components/report-button";
 
 export default function Home() {
   return (
@@ -13,14 +13,19 @@ export default function Home() {
         <div className="px-4 sm:px-6">
           <PageHeader
             className="mb-12"
-            title="The software that sparks your imagination"
-            description="Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever."
+            title={
+              <>
+                Speak Out <br />
+                Safely with Echo
+              </>
+            }
+            description="Echo is a blockchain-powered anonymous reporting platform that empowers individuals to report incidents safely and securely. Whether you're reporting harassment, misconduct, or any other issue, Echo protects your identity while ensuring your voice is heard."
           >
-            Waitlist v1 <span className="text-gray-300 mx-1">·</span> Coming
-            Soon
+            Quiet Reports<span className="text-gray-300 mx-1">·</span> Loud
+            Actions
           </PageHeader>
 
-          <SubscribeForm />
+          <ReportButton />
         </div>
       </div>
     </section>

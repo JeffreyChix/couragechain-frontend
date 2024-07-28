@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-import Logo from "@/public/images/logo.png";
 
 export default function Footer() {
   return (
@@ -9,22 +7,27 @@ export default function Footer() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-8">
             <p className="text-sm text-gray-700 dark:text-gray-400">
-              © Waitlist - A more meaningful home for software. Built by{" "}
-              <a
+              © Echo - Report Anonymously.{" "}
+              <Link
+                href={"/secure/app/public/new-report"}
                 className="font-medium text-indigo-500 hover:underline"
-                href="https://twitter.com/pacovitiello"
-                target="_blank"
               >
-                @pacovitiello
-              </a>{" "}
-              &amp;{" "}
-              <a
+                Make a Report
+              </Link>{" "}
+              /{" "}
+              <Link
+                href={"/"}
                 className="font-medium text-indigo-500 hover:underline"
-                href="https://twitter.com/DavidePacilio"
-                target="_blank"
               >
-                @davidepacilio.
-              </a>
+                Track a Report
+              </Link>{" "}
+              /{" "}
+              <Link
+                href={"/"}
+                className="font-medium text-indigo-500 hover:underline"
+              >
+                Admin Login
+              </Link>
             </p>
           </div>
         </div>
