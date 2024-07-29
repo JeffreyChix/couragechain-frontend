@@ -36,8 +36,10 @@ type BasicReportData = {
 };
 
 type ReportUpdate = {
-  id:number; // temporal
-  status: string;
+  id: number; // temporal
+  status: ReportStatus;
   date: string;
   content: string;
 };
+
+type ReportStatus = "received" | "under_investigation" | "resolved" | "closed";

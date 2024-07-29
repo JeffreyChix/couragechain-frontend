@@ -1,9 +1,9 @@
 "use client";
 
-import { useTheme } from "next-themes";
+import { useInitialTheme } from "@/hooks/useInitialTheme";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useInitialTheme();
 
   return (
     <div className="flex-1 flex justify-end">

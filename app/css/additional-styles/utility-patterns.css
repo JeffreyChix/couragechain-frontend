@@ -172,3 +172,23 @@ input[type="search"]::-webkit-search-results-decoration {
     opacity: 0;
   }
 }
+
+.report-status {
+  @apply capitalize text-sm text-white px-1 rounded-lg;
+}
+
+.report-status.received {
+  @apply bg-cyan-600;
+}
+
+.report-status.under_investigation {
+  @apply bg-indigo-600;
+}
+
+.report-status.resolved {
+  @apply bg-green-600;
+}
+
+.report-status.closed {
+  @apply bg-red-600;
+}
