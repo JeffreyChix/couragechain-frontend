@@ -10,7 +10,7 @@ export default function GradientBox({
         aria-hidden="true"
       />
 
-      <div>{children}</div>
+      <div className="min-w-full">{children}</div>
     </div>
   );
 }

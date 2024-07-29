@@ -1,5 +1,3 @@
-import { InferType } from "yup";
-
 import { yup } from ".";
 import { stripHTMLTags } from "@/utils/html";
 
@@ -27,7 +25,5 @@ const REPORT_SCHEMA = yup.object().shape({
     }),
   supportingDocuments: yup.mixed(),
 });
-
-export type ReportFormData = InferType<typeof REPORT_SCHEMA>;
 
 export { REPORT_SCHEMA };

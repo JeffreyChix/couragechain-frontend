@@ -34,3 +34,10 @@ type BasicReportData = {
   description?: string;
   supportDocuments?: FileState[];
 };
+
+type ReportUpdate = {
+  id:number; // temporal
+  status: string;
+  date: string;
+  content: string;
+};
