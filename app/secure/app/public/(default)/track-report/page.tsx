@@ -1,8 +1,11 @@
 export const metadata = {
-  title: "Track Your Report"
-}
+  title: "Track Your Report",
+};
+
+import { Suspense } from "react";
 
 import TrackReportWrapper from "./wrapper";
+import Loading from "@/components/loading";
 
 export default function TrackReport() {
   return (
@@ -10,7 +13,11 @@ export default function TrackReport() {
       <section>
         <div className="pt-5 pb-12">
           <div className="max-w-3xl mx-auto">
-            <TrackReportWrapper />
+            <Suspense
+              fallback={<Loading loading loadingMessage="Just a second..." />}
+            >
+              <TrackReportWrapper />
+            </Suspense>
           </div>
         </div>
       </section>
