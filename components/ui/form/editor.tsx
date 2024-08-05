@@ -1,9 +1,13 @@
 import { forwardRef } from "react";
 import { BsInfoCircle as InfoIcon } from "react-icons/bs";
 import dynamic from "next/dynamic";
-const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+const QuillEditor = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <Loading loading size={35} />,
+});
 import "react-quill/dist/quill.snow.css";
 
+import Loading from "@/components/loading";
 import InputContainer from "./container";
 import { InputProps } from "./input";
 
@@ -38,8 +42,16 @@ const Editor = forwardRef<typeof QuillEditor, EditorProps>((props, ref) => {
     "code-block",
   ];
 
-  let { label, desc, placeholder, helperText, isInvalid, validation, onChange, value } =
-    props;
+  let {
+    label,
+    desc,
+    placeholder,
+    helperText,
+    isInvalid,
+    validation,
+    onChange,
+    value,
+  } = props;
 
   return (
     <InputContainer title={label} desc={desc} isRequired={validation?.required}>

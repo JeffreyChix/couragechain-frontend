@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-8">
             <p className="text-sm text-gray-700 dark:text-gray-400">
-              © Echo - Report Anonymously.{" "}
+              © Echo - Report Anonymously. <br />
               <Link
                 href={"/secure/app/public/new-report"}
                 className="font-medium text-indigo-500 hover:underline"
@@ -16,7 +16,7 @@ export default function Footer() {
               </Link>{" "}
               /{" "}
               <Link
-                href={"/"}
+                href={"/secure/app/public/track-report"}
                 className="font-medium text-indigo-500 hover:underline"
               >
                 Track a Report

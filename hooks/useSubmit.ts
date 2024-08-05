@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import {
+  UseFormReset,
+  Path,
+  PathValue,
+  FieldValues,
+  UseFormResetField,
+} from "react-hook-form";
+
 import { useRequestError } from "./useRequestError";
 
 const useSubmit = (
@@ -26,7 +34,10 @@ const useSubmit = (
     useToast: handleErrorWithToast,
   });
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async <T extends FieldValues>(
+    values: T,
+    options?: HandleSubmitFuncOptions<T>
+  ) => {
     setIsSubmitting(true);
     setSuccess(false);
     resetError();
@@ -36,6 +47,12 @@ const useSubmit = (
       setData(result);
       setSuccess(true);
       reload?.();
+
+      options?.resetHookForm?.();
+      if (options?.resetHookField) {
+        const { reset, name, opts } = options.resetHookField;
+        reset(name, opts);
+      }
     } catch (err) {
       handleRequestError(err);
       onError?.(err);
@@ -48,6 +65,7 @@ const useSubmit = (
     isSubmitting,
     data,
     success,
+    setSuccess,
     error,
     handleSubmit,
     resetError,
@@ -56,5 +74,19 @@ const useSubmit = (
 };
 
 export type UseSubmitReturn = ReturnType<typeof useSubmit>;
+
+type HandleSubmitFuncOptions<T extends FieldValues> = {
+  resetHookForm?: UseFormReset<T>;
+  resetHookField?: {
+    name: Path<T>;
+    opts?: PathValue<T, Path<T>>;
+    reset: UseFormResetField<T>;
+  };
+};
+
+export type HandleSubmitFunc<T extends FieldValues> = (
+  values: T,
+  options?: HandleSubmitFuncOptions<T>
+) => Promise<void>;
 
 export { useSubmit };

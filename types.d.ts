@@ -34,3 +34,12 @@ type BasicReportData = {
   description?: string;
   supportDocuments?: FileState[];
 };
+
+type ReportUpdate = {
+  report_secret_key: string;
+  status: ReportStatus;
+  date_of_submission: string;
+  content: string;
+};
+
+type ReportStatus = "submitted" | "in-review" | "investigating" | "resolved";

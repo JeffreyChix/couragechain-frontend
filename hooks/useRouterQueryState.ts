@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useWatch } from "./useWatch";
 
@@ -13,7 +15,7 @@ interface Options {
 export function useRouterQueryState<T>(
   name: string,
   defaultValue?: T,
-  opts: Options = {},
+  opts: Options = {}
 ): [T, Dispatch<SetStateAction<T>>] {
   const router = useRouter();
 
@@ -38,39 +40,29 @@ export function useRouterQueryState<T>(
     return value as T;
   };
 
-  const [state, setState] = useState<T>(() => {
-    const value = router.query[name];
-    if (value === undefined) return defaultValue as T;
+  const searchParams = useSearchParams();
+  const newSearchParams = new URLSearchParams(searchParams.toString());
+  const pathname = usePathname();
 
-    return deserialize(value as string);
+  const paramValue = newSearchParams.get(name);
+
+  const [state, setState] = useState<T>(() => {
+    if (paramValue === undefined) return defaultValue as T;
+
+    return deserialize(paramValue as string);
   });
 
   useWatch(() => {
-    //! Don't manipulate the query parameter directly
     const serializedState = serialize(state);
-    const _q = router.query;
 
     if (serializedState === undefined) {
-      if (router.query[name]) {
-        delete _q[name];
-        router.query = _q;
+      if (paramValue) {
+        newSearchParams.delete(name);
       }
     } else {
-      _q[name] = serializedState;
-      router.query = _q;
+      newSearchParams.set(name, serializedState);
     }
-    router.push(
-      {
-        pathname: window.location.pathname,
-        query: {
-          ..._q,
-          [name]: router.query[name],
-        },
-        hash: window.location.hash,
-      },
-      undefined,
-      { shallow: true },
-    );
+    router.push(pathname + "?" + newSearchParams.toString());
   }, [state, name]);
 
   return [state, setState];
