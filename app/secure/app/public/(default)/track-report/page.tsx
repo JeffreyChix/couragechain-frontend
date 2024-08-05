@@ -1,8 +1,8 @@
-"use client"
+export const metadata = {
+  title: "Track Your Report"
+}
 
-import TrackPageHeader from "@/components/track-page-header";
-import Updates from "./updates";
-import Divider from "@/components/divider";
+import TrackReportWrapper from "./wrapper";
 
 export default function TrackReport() {
   return (
@@ -10,9 +10,7 @@ export default function TrackReport() {
       <section>
         <div className="pt-5 pb-12">
           <div className="max-w-3xl mx-auto">
-            <TrackPageHeader onSubmitKey={() => {}} />
-            <Divider>Updates</Divider>
-            <Updates />
+            <TrackReportWrapper />
           </div>
         </div>
       </section>

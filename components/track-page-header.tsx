@@ -1,10 +1,12 @@
-import bannerImage from "@/public/images/report-form-banner.png";
+import bannerImage from "@/public/images/report-form-banner.gif";
 import GradientBox from "./gradient-box";
 import SecretKeyForm from "@/app/secure/app/public/(default)/track-report/form";
 
 export default function TrackPageHeader({
+  defaultValue,
   onSubmitKey,
 }: {
+  defaultValue: string;
   onSubmitKey: (val: string) => void;
 }) {
   return (
@@ -18,7 +20,7 @@ export default function TrackPageHeader({
 
       <GradientBox>
         <div className="px-4 py-4">
-          <SecretKeyForm onSubmitKey={onSubmitKey} />
+          <SecretKeyForm defaultValue={defaultValue} onSubmitKey={onSubmitKey} />
         </div>
       </GradientBox>
     </div>

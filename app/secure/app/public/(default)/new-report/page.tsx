@@ -4,7 +4,7 @@ export const metadata = {
 };
 
 import ReportPageHeader from "@/components/report-page-header";
-import NewReportForm from "./form";
+import NewReportFormWrapper from "./form-wrapper";
 
 export default function NewReport() {
   return (
@@ -13,7 +13,7 @@ export default function NewReport() {
         <div className="pt-5 pb-12">
           <div className="max-w-3xl mx-auto">
             <ReportPageHeader />
-            <NewReportForm />
+            <NewReportFormWrapper />
           </div>
         </div>
       </section>

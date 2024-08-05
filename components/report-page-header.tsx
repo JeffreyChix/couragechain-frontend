@@ -1,6 +1,6 @@
-import bannerImage from "@/public/images/report-form-banner.png";
+import bannerImage from "@/public/images/report-form-banner.gif";
 import GradientBox from "./gradient-box";
-import SorobanLogo from "./soroban-logo";
+import StellarLogo from "./stellar-logo";
 
 export default function ReportPageHeader() {
   return (
@@ -18,11 +18,11 @@ export default function ReportPageHeader() {
             Submit An Anonymous Report
           </h1>
 
-          <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-3 mb-2">
             <p>
               Please provide a detailed description of the incident and upload
-              any supporting evidence, such as documents, images, audios, or videos.
-              Your information will greatly assist the authorities.
+              any supporting evidence, such as documents, images, audios, or
+              videos. Your information will greatly assist the authorities.
             </p>
             <p>
               On Echo, you can report any type of crime or incident, including
@@ -40,10 +40,10 @@ export default function ReportPageHeader() {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <SorobanLogo />
+            <StellarLogo />
             <p className="text-sm text-center text-gray-500">
-              Cutting-edge blockchain technology ensures <br /> your reports are
-              secure and anonymous.
+              Your report and attachments are securely <br />
+              encrypted and stored on the blockchain.
             </p>
           </div>
         </div>

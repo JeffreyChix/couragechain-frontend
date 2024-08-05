@@ -36,10 +36,10 @@ type BasicReportData = {
 };
 
 type ReportUpdate = {
-  id: number; // temporal
+  report_secret_key: string;
   status: ReportStatus;
-  date: string;
+  date_of_submission: string;
   content: string;
 };
 
-type ReportStatus = "received" | "under_investigation" | "resolved" | "closed";
+type ReportStatus = "submitted" | "in-review" | "investigating" | "resolved";

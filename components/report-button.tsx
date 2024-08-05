@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import SorobanLogo from "./soroban-logo";
+import StellarLogo from "./stellar-logo";
 
 export default function ReportButton() {
   return (
@@ -29,7 +29,7 @@ export default function ReportButton() {
       <div className="max-w-3xl mx-auto">
         <div className="text-center">
           <div className="flex justify-center -space-x-2 mb-4">
-            <SorobanLogo />
+            <StellarLogo />
           </div>
           <p className="text-sm text-gray-500">
             Cutting-edge blockchain technology ensures <br /> your reports are

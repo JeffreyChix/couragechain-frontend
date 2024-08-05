@@ -7,9 +7,13 @@ import VerticalLines from "@/components/vertical-lines";
 
 export default function NewReportLayout({
   children,
+  modal
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
+
+  console.log("Modal => ", modal)
   return (
     <>
       <VerticalLines />
@@ -31,7 +35,10 @@ export default function NewReportLayout({
           </div>
 
           <div className="lg:ml-20 w-full h-full overflow-auto p-4 pt-16 lg:pt-4">
-            <div className="space-y-4">{children}</div>
+            <div className="space-y-4">
+              {modal}
+              {children}
+            </div>
           </div>
         </div>
       </main>

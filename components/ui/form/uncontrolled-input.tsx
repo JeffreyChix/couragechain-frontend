@@ -77,6 +77,7 @@ const UncontrolledInput = forwardRef<HTMLInputElement, UncontrolledInputProps>(
           className={`form-input w-full text-lg ${
             isInvalid && "form-input-invalid"
           }`}
+          defaultValue={defaultValue}
           onChange={handleChange}
           onKeyUp={handleSubmit}
           {...otherProps}

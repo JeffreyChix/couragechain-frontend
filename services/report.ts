@@ -7,7 +7,7 @@ const REPORT_SERVICE = {
 
   GET_REPORT_UPDATES(secretKey: string) {
     return client
-      .get(`/report/update/${secretKey}`)
+      .get(`/report/update/all/${secretKey}`)
       .then(({ data }) => data.data);
   },
 };

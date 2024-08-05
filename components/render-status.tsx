@@ -1,6 +1,13 @@
 export default function RenderStatus({ status }: { status: ReportStatus }) {
-  const __status =
-    status === "under_investigation" ? "under investigation" : status;
+  const __status = status === "in-review" ? "in review" : status;
 
-  return <span className={`report-status ${status}`}>{__status}</span>;
+  return (
+    <span
+      className={`report-status ${
+        status === "in-review" ? "in_review" : status
+      }`}
+    >
+      {__status}
+    </span>
+  );
 }
