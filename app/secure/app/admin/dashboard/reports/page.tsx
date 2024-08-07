@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import RenderTabs from "@/components/render-tabs";
 import BoardView from "./board";
 import TableView from "./table";
 import { REPORT_SERVICE } from "@/services/report";
+import Loading from "@/components/loading";
 
 export function generateMetadata(): Metadata {
   return {
@@ -46,21 +48,25 @@ export default async function Reports() {
         </GradientBox>
       </div> */}
 
-      <RenderTabs
-        defaultValue="board"
-        tabs={[
-          {
-            title: "Board",
-            value: "board",
-            body: <BoardView reports={reports} />,
-          },
-          {
-            title: "Table",
-            value: "table",
-            body: <TableView reports={reports} />,
-          },
-        ]}
-      />
+      <Suspense
+        fallback={<Loading loading loadingMessage="Just a second..." />}
+      >
+        <RenderTabs
+          defaultValue="board"
+          tabs={[
+            {
+              title: "Board",
+              value: "board",
+              body: <BoardView reports={reports} />,
+            },
+            {
+              title: "Table",
+              value: "table",
+              body: <TableView reports={reports} />,
+            },
+          ]}
+        />
+      </Suspense>
     </div>
   );
 }
