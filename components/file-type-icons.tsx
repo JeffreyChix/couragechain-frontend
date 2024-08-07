@@ -9,8 +9,16 @@ import {
 import { FaRegFilePdf } from "react-icons/fa6";
 import { FaRegFile as FileIcon } from "react-icons/fa";
 
-export default function FileTypeIcon({ type }: { type?: string }) {
-  const IMAGE_TYPES = ["png", "jpeg", "jpg", "svg"];
+export default function FileTypeIcon({
+  type,
+  size = 30,
+  className = "shrink-0",
+}: {
+  type?: string;
+  size?: number;
+  className?: string;
+}) {
+  const IMAGE_TYPES = ["png", "jpeg", "jpg", "svg", "gif"];
   const SHEET_TYPES = ["xls", "xlsx"];
   const WORD_TYPES = ["doc", "docx"];
   const PRESENTATION_TYPES = ["ppt", "pptx"];
@@ -20,24 +28,26 @@ export default function FileTypeIcon({ type }: { type?: string }) {
   const OTHER_DOC_TYPES = ["csv", "txt"];
 
   const getIcon = () => {
-    if (!type) return <FileIcon size={30} className="shrink-0" />;
+    if (!type) return <FileIcon size={size} className={className} />;
     if (IMAGE_TYPES.includes(type))
-      return <IoImagesOutline size={30} className="shrink-0" />;
+      return <IoImagesOutline size={size} className={className} />;
     if (SHEET_TYPES.includes(type))
-      return <PiMicrosoftExcelLogoFill size={30} className="shrink-0" />;
+      return <PiMicrosoftExcelLogoFill size={size} className={className} />;
     if (PDF_TYPES.includes(type))
-      return <FaRegFilePdf size={30} className="shrink-0" />;
+      return <FaRegFilePdf size={size} className={className} />;
     if (WORD_TYPES.includes(type))
-      return <PiMicrosoftWordLogoFill size={30} className="shrink-0" />;
+      return <PiMicrosoftWordLogoFill size={size} className={className} />;
     if (PRESENTATION_TYPES.includes(type))
-      return <PiMicrosoftPowerpointLogoFill size={30} className="shrink-0" />;
+      return (
+        <PiMicrosoftPowerpointLogoFill size={size} className={className} />
+      );
     if (AUDIO_TYPES.includes(type))
-      return <FiHeadphones size={30} className="shrink-0" />;
+      return <FiHeadphones size={size} className={className} />;
     if (VIDEO_TYPES.includes(type))
-      return <AiOutlineVideoCamera size={30} className="shrink-0" />;
+      return <AiOutlineVideoCamera size={size} className={className} />;
     if (OTHER_DOC_TYPES.includes(type))
-      return <IoDocumentTextOutline size={30} className="shrink-0" />;
-    return <FileIcon size={30} className="shrink-0" />;
+      return <IoDocumentTextOutline size={size} className={className} />;
+    return <FileIcon size={size} className={className} />;
   };
 
   return getIcon();

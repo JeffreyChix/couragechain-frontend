@@ -42,4 +42,59 @@ type ReportUpdate = {
   content: string;
 };
 
+type NewReportUpdate = {
+  reportSecretKey: string;
+  status: ReportStatus;
+  content: string;
+};
+
 type ReportStatus = "submitted" | "in-review" | "investigating" | "resolved";
+
+type MenuItem = {
+  label: string;
+  icon: React.ReactNode;
+  href: string;
+};
+
+type Tab = {
+  title: string;
+  value: string;
+  body: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+};
+
+type FetchedAttachment = { mimetype: string; filename: string; buffer: string };
+
+type FetchedReport = {
+  subject: string;
+  date_of_submission: string;
+  location: string;
+  date_of_incident: string;
+  secretKey: string;
+  description: string;
+  attachments: Array<FetchedAttachment>;
+};
+
+type TableColumn<T> = {
+  name: string;
+  data: React.ReactNode | ((row: T) => React.ReactNode);
+  className?: string;
+  show?: boolean;
+};
+
+type DropdownMenuItem = {
+  title: string;
+  link?: string;
+  icon?: React.ReactNode;
+  className?: string;
+  isCursorPointer?: boolean;
+  onClick?: () => void;
+  disabled?: boolean;
+  withSeparator?: boolean;
+};
+
+type DropdownMenu = {
+  label?: string;
+  items?: DropdownMenuItem[];
+};
