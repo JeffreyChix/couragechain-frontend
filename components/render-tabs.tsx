@@ -3,7 +3,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { useRouterQueryState } from "@/hooks/useRouterQueryState";
-import { useState } from "react";
 
 interface RenderTabsProps {
   defaultValue: string;
