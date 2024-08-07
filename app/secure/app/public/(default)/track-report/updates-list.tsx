@@ -3,6 +3,7 @@ import { v4 } from "uuid";
 import RenderStatus from "@/components/render-status";
 import { getDateInTimeZone } from "@/utils/date";
 import { EMPTY_FIELD } from "@/utils/misc";
+import HTMLViewer from "@/components/html-viewer";
 
 export default function UpdatesList({ updates }: { updates: ReportUpdate[] }) {
   return (
@@ -21,17 +22,14 @@ export default function UpdatesList({ updates }: { updates: ReportUpdate[] }) {
               <RenderStatus status={update.status} />
             </header>
 
-            <div className="flex flex-col justify-center items-center mb-4">
+            <div className="my-5">
               {update.content === EMPTY_FIELD ? (
-                <p className="text-gray-600 dark:text-gray-200 mt-5">
+                <p className="text-gray-600 dark:text-gray-200">
                   Your report has been successfully submitted and received.
                   Updates and the status of your report will be available here.
                 </p>
               ) : (
-                <div
-                  className="text-gray-600 dark:text-gray-200 mt-5"
-                  dangerouslySetInnerHTML={{ __html: update.content }}
-                />
+                <HTMLViewer auto html={update.content} />
               )}
             </div>
           </article>

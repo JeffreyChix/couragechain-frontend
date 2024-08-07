@@ -1,23 +1,28 @@
 "use client";
 
-import AppDrawer from "@/components/app-drawer";
-import NewReportForm from "./form";
 import { useSubmit } from "@/hooks/useSubmit";
+import UpdateForm from "./form";
 import { REPORT_SERVICE } from "@/services/report";
+import AppDrawer from "@/components/app-drawer";
 import { Button } from "@/components/ui/button";
-import SubmittingReport from "./submitting-report";
+import SubmittingUpdate from "./submitting-update";
 
-export default function NewReportFormWrapper() {
-  const { isSubmitting, handleSubmit, success, setSuccess, data } = useSubmit(
-    REPORT_SERVICE.MAKE_NEW_REPORT
+export default function Update({ id }: { id: string }) {
+  const { isSubmitting, handleSubmit, success, setSuccess } = useSubmit(
+    REPORT_SERVICE.NEW_REPORT_UPDATE
   );
 
   return (
-    <>
-      <NewReportForm isSubmitting={isSubmitting} submitHandler={handleSubmit} />
+    <div className="grid place-items-center">
+      <UpdateForm
+        id={id}
+        isSubmitting={isSubmitting}
+        submitHandler={handleSubmit}
+      />
+
       <AppDrawer open={isSubmitting || success} dismissible={false}>
         <div className="w-full max-w-md mx-auto pb-20">
-          <SubmittingReport secretKey={data} isSuccessful={success} />
+          <SubmittingUpdate isSuccessful={success} />
           {success && (
             <>
               <hr className="my-4" />
@@ -34,6 +39,6 @@ export default function NewReportFormWrapper() {
           )}
         </div>
       </AppDrawer>
-    </>
+    </div>
   );
 }

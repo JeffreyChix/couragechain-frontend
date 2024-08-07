@@ -23,7 +23,7 @@ export default function Footer() {
               </Link>{" "}
               /{" "}
               <Link
-                href={"/"}
+                href={"/secure/app/admin/dashboard"}
                 className="font-medium text-indigo-500 hover:underline"
               >
                 Admin Login

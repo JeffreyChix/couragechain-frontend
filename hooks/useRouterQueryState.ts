@@ -47,7 +47,8 @@ export function useRouterQueryState<T>(
   const paramValue = newSearchParams.get(name);
 
   const [state, setState] = useState<T>(() => {
-    if (paramValue === undefined) return defaultValue as T;
+    if (paramValue === undefined || paramValue === null)
+      return defaultValue as T;
 
     return deserialize(paramValue as string);
   });

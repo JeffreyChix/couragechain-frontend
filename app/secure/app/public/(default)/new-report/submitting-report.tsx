@@ -22,7 +22,11 @@ export default function SubmittingReport({
     <div className="min-h-[320px]">
       <Transition transitionKey={String(isSuccessful)}>
         {!isSuccessful ? (
-          <InProgress />
+          <InProgress
+            loadingMessage="Submitting report..."
+            message="We're encrypting your report and attachments. This process might take
+          a moment. Please be patient while we ensure your data is secure."
+          />
         ) : (
           <>
             <div className="flex flex-col justify-center items-center space-y-10">
@@ -91,15 +95,18 @@ export default function SubmittingReport({
   );
 }
 
-const InProgress = () => {
+export const InProgress = ({
+  loadingMessage,
+  message,
+}: {
+  loadingMessage: string;
+  message: string;
+}) => {
   return (
     <div className="grid place-items-center h-full">
       <div className="flex flex-col items-center justify-center gap-y-3">
-        <Loading loading size={30} loadingMessage="Submitting report..." />
-        <p className="text-center border-t py-2">
-          We're encrypting your report and attachments. This process might take
-          a moment. Please be patient while we ensure your data is secure.
-        </p>
+        <Loading loading size={30} loadingMessage={loadingMessage} />
+        <p className="text-center border-t py-2">{message}</p>
       </div>
     </div>
   );

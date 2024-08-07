@@ -2,9 +2,11 @@ import axios from "axios";
 
 import { CONFIG } from "@/config";
 
+const BASE_URL = `${CONFIG.API_URL}/api/v1/secure`;
+
 const client = axios.create({
-  baseURL: `${CONFIG.API_URL}/api/v1/secure`,
+  baseURL: BASE_URL,
   withCredentials: true,
 });
 
-export { client };
+export { client, BASE_URL };
