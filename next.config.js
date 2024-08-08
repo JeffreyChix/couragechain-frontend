@@ -7,6 +7,10 @@ const nextConfig = {
         hostname: "developers.stellar.org",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
     ],
   },
 };

@@ -1,5 +1,7 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
+
 import BgShapes from "@/components/bg-shapes";
 import Sidebar from "@/components/ui/dashboard/sidebar";
 import VerticalLines from "@/components/vertical-lines";
@@ -12,7 +14,7 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <SessionProvider>
       <VerticalLines />
       <BgShapes />
 
@@ -26,6 +28,6 @@ export default function AdminLayout({
           </div>
         </div>
       </TooltipProvider>
-    </>
+    </SessionProvider>
   );
 }

@@ -4,8 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PanelLeft } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Button } from "../button";
 import {
   DropdownMenu,
@@ -15,7 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Avatar from "@/public/images/avatar-04.jpg";
+import MainAvatar from "@/public/images/main-avatar.jpg";
 import Breadcrumbs from "./menu/breadcrumbs";
 import { MENU_ITEMS } from "./sidebar";
 import Logo from "../logo";
@@ -24,13 +25,20 @@ import ThemeToggle from "../theme-toggle";
 export default function DashboardHeader() {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
+  const { data: session } = useSession();
+
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
       <Sheet
         open={openMobileMenu}
         onOpenChange={() => setOpenMobileMenu(false)}
       >
-        <Button onClick={() => setOpenMobileMenu(true)} size="icon" variant="outline" className="sm:hidden">
+        <Button
+          onClick={() => setOpenMobileMenu(true)}
+          size="icon"
+          variant="outline"
+          className="sm:hidden"
+        >
           <PanelLeft className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
@@ -72,7 +80,7 @@ export default function DashboardHeader() {
             className="overflow-hidden rounded-full"
           >
             <Image
-              src={Avatar}
+              src={session?.user?.image || MainAvatar}
               width={36}
               height={36}
               alt="Avatar"
@@ -83,7 +91,9 @@ export default function DashboardHeader() {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => signOut({ redirect: true })}>
+            Log Out
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>

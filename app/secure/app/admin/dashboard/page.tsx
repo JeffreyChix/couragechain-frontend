@@ -1,29 +1,37 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 import GradientBox from "@/components/gradient-box";
-import Button from "@/components/ui/form/button";
 import Logo from "@/components/ui/logo";
+import { auth } from "@/app/api/auth/[...nextauth]/auth";
 
-export default function Dashboard() {
-  const router = useRouter();
+export default async function Dashboard() {
+  const session = await auth();
 
   return (
     <div className="w-full max-w-3xl mx-auto grid place-items-center">
       <GradientBox>
-        <div className="grid place-items-center gap-y-5 p-5">
+        <div className="flex flex-col gap-5 p-5">
           <Logo isLink={false} />
-          <h1 className="text-center">
-            Welcome to the Echo Dashboard, where blockchain technology drives
-            positive change! This screen is currently under development. Click
-            the button to review some reports and see the impact we're making!
-          </h1>
-          <Button
-            onClick={() => router.push("/secure/app/admin/dashboard/reports")}
+          <div>
+            <h2 className="font-inter-tight text-xl my-3">
+              Hello{" "}
+              <span className="italic text-indigo-400">
+                {session?.user?.name}
+              </span>
+              ,
+            </h2>
+            <p>
+              Welcome to the Echo Dashboard, where blockchain technology drives
+              positive change! This screen is currently under development. Click
+              the button to review some reports and see the impact we're making!
+            </p>
+          </div>
+          <Link
+            href="/secure/app/admin/dashboard/reports"
+            className="btn text-gray-100 text-2xl bg-gray-900 hover:bg-gray-800 dark:text-gray-800 dark:bg-gray-100 dark:hover:bg-white"
           >
             See Reports
-          </Button>
+          </Link>
         </div>
       </GradientBox>
     </div>
