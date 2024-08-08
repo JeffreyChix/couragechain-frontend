@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import logo from "@/public/images/logo.png";
 import logoDark from "@/public/images/logo-dark.png";
 
-export default function Logo() {
+export default function Logo({ isLink = true }: { isLink?: boolean }) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -20,13 +20,19 @@ export default function Logo() {
     return null;
   }
 
-  return (
+  const Logo = (
+    <Image
+      src={theme === "dark" ? logoDark : logo}
+      alt="Echo Logo"
+      width={80}
+    />
+  );
+
+  return isLink ? (
     <Link href="/" className="cursor-pointer">
-      <Image
-        src={theme === "dark" ? logoDark : logo}
-        alt="Echo Logo"
-        width={80}
-      />
+      {Logo}
     </Link>
+  ) : (
+    Logo
   );
 }
