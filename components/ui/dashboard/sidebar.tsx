@@ -16,7 +16,7 @@ export default function Sidebar() {
   );
 }
 
-const MENU_ITEMS: MenuItem[] = [
+export const MENU_ITEMS: MenuItem[] = [
   {
     label: "Dashboard",
     icon: <LayoutDashboard className="h-5 w-5" />,
