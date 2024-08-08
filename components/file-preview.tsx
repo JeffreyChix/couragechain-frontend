@@ -1,13 +1,15 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
-import FileTypeIcon from "./file-type-icons";
+import FileTypeIcon, { IMAGE_TYPES } from "./file-type-icons";
 import Loading from "@/components/loading";
 import { shorten } from "@/utils/string";
 import RenderDialog from "@/components/render-dialog";
 
-const supportedOfficeExtensions = [
+const SUPPORTED_OFFICE_EXTENSIONS = [
   "xls",
   "xlsx",
   "doc",
@@ -62,22 +64,54 @@ const Preview = ({ attachment }: { attachment: FetchedAttachment | null }) => {
   const href = `data:${mimetype};base64,${buffer}`;
 
   const getPreviewLink = () => {
-    return supportedOfficeExtensions.includes(extension as string)
+    return SUPPORTED_OFFICE_EXTENSIONS.includes(extension as string)
       ? `https://view.officeapps.live.com/op/embed.aspx?src=${href}`
       : href;
   };
 
   return (
-    <div className="h-full">
-      <Loading loading={loading} loadingMessage="Loading file..." />
-      <div className="overflow-auto h-full">
-        <iframe
-          src={getPreviewLink()}
-          width="100%"
-          height="100%"
-          onLoad={() => setLoading(false)}
-        />
+    <div className="w-full h-full max-h-[80vh]">
+      <div className="grid place-items-center p-4 h-full">
+        <div className="h-full w-full flex flex-col items-center justify-center ">
+          <Link
+            href={getPreviewLink()}
+            target="_blank"
+            className="text-indigo-400 block my-2"
+          >
+            Open in a new tab
+          </Link>
+          {IMAGE_TYPES.includes(extension as string) ? (
+            <ImagePreview source={href} name={filename} />
+          ) : (
+            <>
+              <Loading loading={loading} loadingMessage="Loading file..." />
+              <iframe
+                src={getPreviewLink()}
+                width="100%"
+                height="100%"
+                onLoad={() => setLoading(false)}
+              />
+            </>
+          )}
+        </div>
       </div>
+    </div>
+  );
+};
+
+const ImagePreview = ({ source, name }: { source: string; name: string }) => {
+  return (
+    <div className="relative h-[480px]">
+      <Image
+        src={source}
+        alt={name}
+        height={480}
+        width={500}
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+        }}
+      />
     </div>
   );
 };

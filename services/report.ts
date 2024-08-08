@@ -11,18 +11,10 @@ const REPORT_SERVICE = {
       .then(({ data }) => data.data);
   },
 
-  async GET_ALL_REPORT_KEYS() {
-    const response = await fetch(`${BASE_URL}/report/all-keys`, {
-      next: { revalidate: 1800 },
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch report keys!");
-    }
-
-    const data = await response.json();
-
-    return data.data as string[];
+  GET_ALL_REPORT_KEYS() {
+    return client
+      .get("/report/all-keys")
+      .then(({ data }) => data.data as string[]);
   },
 
   async GET_ALL_REPORTS() {
