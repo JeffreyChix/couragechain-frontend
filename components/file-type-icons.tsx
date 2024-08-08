@@ -9,6 +9,17 @@ import {
 import { FaRegFilePdf } from "react-icons/fa6";
 import { FaRegFile as FileIcon } from "react-icons/fa";
 
+const IMAGE_TYPES = ["png", "jpeg", "jpg", "svg", "gif", "jfif"];
+const SHEET_TYPES = ["xls", "xlsx"];
+const WORD_TYPES = ["doc", "docx"];
+const PRESENTATION_TYPES = ["ppt", "pptx"];
+const PDF_TYPES = ["pdf"];
+const AUDIO_TYPES = ["wav", "mp3"];
+const VIDEO_TYPES = ["mp4", "mkv", "webm"];
+const OTHER_DOC_TYPES = ["csv", "txt"];
+
+export { IMAGE_TYPES, AUDIO_TYPES, VIDEO_TYPES };
+
 export default function FileTypeIcon({
   type,
   size = 30,
@@ -18,15 +29,6 @@ export default function FileTypeIcon({
   size?: number;
   className?: string;
 }) {
-  const IMAGE_TYPES = ["png", "jpeg", "jpg", "svg", "gif"];
-  const SHEET_TYPES = ["xls", "xlsx"];
-  const WORD_TYPES = ["doc", "docx"];
-  const PRESENTATION_TYPES = ["ppt", "pptx"];
-  const PDF_TYPES = ["pdf"];
-  const AUDIO_TYPES = ["wav", "mp3"];
-  const VIDEO_TYPES = ["mp4", "mkv", "webm"];
-  const OTHER_DOC_TYPES = ["csv", "txt"];
-
   const getIcon = () => {
     if (!type) return <FileIcon size={size} className={className} />;
     if (IMAGE_TYPES.includes(type))
