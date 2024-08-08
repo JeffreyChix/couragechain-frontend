@@ -7,8 +7,6 @@ import TableView from "./table";
 import { REPORT_SERVICE } from "@/services/report";
 import Loading from "@/components/loading";
 
-export const runtime = 'edge';
-
 export function generateMetadata(): Metadata {
   return {
     title: "All Reports - Echo",
