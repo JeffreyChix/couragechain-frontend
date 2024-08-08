@@ -1,18 +1,15 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import RenderTabs from "@/components/render-tabs";
-import BoardView from "./board";
+import FolderView from "./folder";
 import TableView from "./table";
 import { REPORT_SERVICE } from "@/services/report";
 import Loading from "@/components/loading";
 
-export function generateMetadata(): Metadata {
-  return {
-    title: "All Reports - Echo",
-    description: "All reports on Echo.",
-  };
-}
+export const metadata = {
+  title: "All Reports - Echo",
+  description: "All reports on Echo.",
+};
 
 export default async function Reports() {
   const reports = await REPORT_SERVICE.GET_ALL_REPORTS();
@@ -30,12 +27,12 @@ export default async function Reports() {
         fallback={<Loading loading loadingMessage="Just a second..." />}
       >
         <RenderTabs
-          defaultValue="board"
+          defaultValue="folder"
           tabs={[
             {
-              title: "Board",
-              value: "board",
-              body: <BoardView reports={reports} />,
+              title: "Folder",
+              value: "folder",
+              body: <FolderView reports={reports} />,
             },
             {
               title: "Table",

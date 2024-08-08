@@ -1,6 +1,6 @@
 import ReportFolder from "@/components/report-folder";
 
-export default function BoardView({
+export default function FolderView({
   reports = [],
 }: {
   reports: FetchedReport[];
