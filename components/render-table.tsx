@@ -52,9 +52,11 @@ export default function RenderTable<T>({
         </TableHeader>
         <TableBody>
           {data.length === 0 ? (
-            <div className="py-5 grid place-items-center">
-              <EmptyRecords message="Sorry! No records found!" />
-            </div>
+            <TableRow>
+              <TableCell colSpan={columns.length + 1} className="p-4">
+                <EmptyRecords message="Sorry! No records found!" />
+              </TableCell>
+            </TableRow>
           ) : (
             data.map((row, index) => {
               const id = getRowId(row);

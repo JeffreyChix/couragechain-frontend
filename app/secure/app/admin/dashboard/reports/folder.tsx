@@ -1,14 +1,14 @@
 import ReportFolder from "@/components/report-folder";
 
 export default function FolderView({
-  reports = [],
+  reportsInfo = [],
 }: {
-  reports: FetchedReport[];
+  reportsInfo: FetchedReportInfo[];
 }) {
   return (
     <div className="my-10">
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-        {reports.map(({ secretKey, date_of_submission, subject }, index) => (
+        {reportsInfo.map(({ secretKey, date_of_submission, subject }, index) => (
           <ReportFolder
             key={index + secretKey}
             title={subject}

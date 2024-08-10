@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function Reports() {
-  const reports = await REPORT_SERVICE.GET_ALL_REPORTS();
+  const reportsInfo = await REPORT_SERVICE.GET_ALL_REPORTS_INFO();
 
   return (
     <div>
@@ -32,12 +32,12 @@ export default async function Reports() {
             {
               title: "Folder",
               value: "folder",
-              body: <FolderView reports={reports} />,
+              body: <FolderView reportsInfo={reportsInfo} />,
             },
             {
               title: "Table",
               value: "table",
-              body: <TableView reports={reports} />,
+              body: <TableView reportsInfo={reportsInfo} />,
             },
           ]}
         />
