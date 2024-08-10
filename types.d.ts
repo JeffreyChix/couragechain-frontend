@@ -76,6 +76,13 @@ type FetchedReport = {
   attachments: Array<FetchedAttachment>;
 };
 
+type FetchedReportInfo = {
+  subject: string;
+  date_of_submission: string;
+  secretKey: string;
+  attachmentLength: number;
+};
+
 type TableColumn<T> = {
   name: string;
   data: React.ReactNode | ((row: T) => React.ReactNode);

@@ -1,11 +1,11 @@
 import RenderTable from "@/components/render-table";
 import { REPORT_DATA_COLUMNS } from "@/lib/table";
 
-export default function TableView({ reports }: { reports: FetchedReport[] }) {
+export default function TableView({ reportsInfo }: { reportsInfo: FetchedReportInfo[] }) {
   return (
     <div className="my-10">
       <RenderTable
-        data={reports}
+        data={reportsInfo}
         columns={REPORT_DATA_COLUMNS}
         getRowId={({ secretKey }) => secretKey}
         getRowActions={({ secretKey }) => [
@@ -20,7 +20,7 @@ export default function TableView({ reports }: { reports: FetchedReport[] }) {
             ],
           },
         ]}
-        caption={`All Uploaded Reports (${reports.length})`}
+        caption={`All Uploaded Reports (${reportsInfo.length})`}
       />
     </div>
   );

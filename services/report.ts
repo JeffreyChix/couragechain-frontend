@@ -17,18 +17,18 @@ const REPORT_SERVICE = {
       .then(({ data }) => data.data as string[]);
   },
 
-  async GET_ALL_REPORTS() {
-    const response = await fetch(`${BASE_URL}/report/all`, {
+  async GET_ALL_REPORTS_INFO() {
+    const response = await fetch(`${BASE_URL}/report/info`, {
       next: { revalidate: 1800 },
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch reports!");
+      throw new Error("Failed to fetch reports info!");
     }
 
     const data = await response.json();
 
-    return data.data as FetchedReport[];
+    return data.data as FetchedReportInfo[];
   },
 
   async GET_REPORT(secretKey: string) {
