@@ -1,3 +1,5 @@
 const EMPTY_FIELD = "__NULL__";
 
-export { EMPTY_FIELD };
+const OAUTH_NOTICE = "OAUTH_NOTICE";
+
+export { EMPTY_FIELD, OAUTH_NOTICE };
